@@ -40,6 +40,16 @@ public class Population {
         return fittest;
     }
 
+    public int getWoriestIndex() {
+        int res =0;
+        for (int i = 1; i < getPopulationSize(); i++) {
+            if (tours[res].getFitness() < getTour(i).getFitness()) {
+                res = i;
+            }
+        }
+        return res;
+    }
+
     // Gets population size
     public int getPopulationSize() {
         return tours.length;

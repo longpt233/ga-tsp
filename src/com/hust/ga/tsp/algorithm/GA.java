@@ -12,7 +12,7 @@ public class GA {
 
     private static final double mutationRate = 0.015;
     private static final int tournamentSize = 5;
-    private static final boolean elitism = true;
+    public static final boolean elitism = false ;
 
     // main loop
     public static Population evolvePopulation(Population pop) {
@@ -83,7 +83,7 @@ public class GA {
         return child;
     }
 
-    private static void mutate(Tour tour) {
+    public static void mutate(Tour tour) {
         for(int tourPos1=0; tourPos1 < tour.getTourSize(); tourPos1++){
             // rand to mutation
             if(Math.random() < mutationRate){
@@ -98,7 +98,7 @@ public class GA {
     }
 
     // Selects random tounamentSize from input population, then return fitness tour
-    private static Tour tournamentSelection(Population pop) {
+    public static Tour tournamentSelection(Population pop) {
         Population tournament = new Population(tournamentSize);
         for (int i = 0; i < tournamentSize; i++) {
             int randomId = (int) (Math.random() * pop.getPopulationSize());

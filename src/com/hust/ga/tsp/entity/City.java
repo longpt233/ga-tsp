@@ -6,10 +6,17 @@
 package com.hust.ga.tsp.entity;
 
 public class City {
+    int index;
     int x;
     int y;
     
+    public City(int index,int x, int y){
+        this.index=index;
+        this.x = x;
+        this.y = y;
+    }
     public City(int x, int y){
+        this.index=0;
         this.x = x;
         this.y = y;
     }
@@ -30,6 +37,6 @@ public class City {
     
     @Override
     public String toString(){
-        return getX()+", "+getY();
+        return (String.valueOf( this.index));
     }
 }

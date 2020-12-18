@@ -1,0 +1,110 @@
+# Parallel report
+- OS: Ubuntu 20.04.1 LTS x86_64
+- CPU: Intel i5-8250U (8) @ 3.400GHz
+- Memory: 5659MiB / 7825MiB
+
+1. Test độ chính xác
+-
+
+2. Test hiệu suất của elite
+- elite_size =1
+- loop test :100
+- số lượng thành phố 200
+- điều kiên dừng: dis < 16000
+
+kết quả : số lần tiến hóa tới khi dừng
+elite enable =false  gen loop 21
+elite enable =true  gen loop 17
+
+3. Test hiêu suất của song song
+- num of best child=1
+
+#TESTCASE 1: 100 thanh pho
+
+num of best/popsize =1/20
+
+num thread=1, pop size=20, gen to goals 14631.3,time =1032923.1451
+num thread=6, pop size=20, gen to goals 2426.6,time =1011518.9686
+num thread=11, pop size=20, gen to goals 1341.1,time =1020663.0854
+num thread=16, pop size=20, gen to goals 875.0,time =967447.4200000002
+num thread=21, pop size=20, gen to goals 747.8,time =1086555.9977
+num thread=26, pop size=20, gen to goals 614.7,time =1104544.5652
+num thread=31, pop size=20, gen to goals 453.4,time =971211.223
+num thread=36, pop size=20, gen to goals 408.8,time =1016214.3166000001
+
+num of best/ popsize =1/50
+
+num thread=1, pop size=50, gen to goals 46828.5,time =3252662.8482999997
+num thread=6, pop size=50, gen to goals 9108.6,time =3804317.9921999997
+num thread=11, pop size=50, gen to goals 4109.5,time =3164018.722
+num thread=16, pop size=50, gen to goals 2755.4,time =3071308.9694
+num thread=21, pop size=50, gen to goals 2510.8,time =3672948.6495
+num thread=26, pop size=50, gen to goals 2082.3,time =3767186.7911
+num thread=31, pop size=50, gen to goals 1544.0,time =3328331.7192
+num thread=36, pop size=50, gen to goals 1449.1,time =3622806.9343000003
+
+#TESTCASE 2: 200 thanh pho
+
+1/50
+
+num thread=1, pop size=50, gen to goals 15333.7,time =1414379.7584000002
+num thread=6, pop size=50, gen to goals 2420.4,time =1327793.959
+num thread=11, pop size=50, gen to goals 1132.3,time =1139858.6511
+num thread=16, pop size=50, gen to goals 855.5,time =1249096.2428000001
+num thread=21, pop size=50, gen to goals 539.4,time =1035763.2118
+num thread=26, pop size=50, gen to goals 522.0,time =1244766.2165999997
+num thread=31, pop size=50, gen to goals 431.3,time =1225066.2963
+num thread=36, pop size=50, gen to goals 329.9,time =1086741.6318
+
+1/20
+
+num thread=1, pop size=20, gen to goals 3140.5,time =326513.9945000001
+num thread=6, pop size=20, gen to goals 656.7,time =355815.51810000004
+num thread=11, pop size=20, gen to goals 347.1,time =346884.5627
+num thread=16, pop size=20, gen to goals 266.6,time =387828.71129999997
+num thread=21, pop size=20, gen to goals 169.2,time =322221.9197
+num thread=26, pop size=20, gen to goals 176.7,time =416074.4806
+num thread=31, pop size=20, gen to goals 139.0,time =389922.42939999996
+num thread=36, pop size=20, gen to goals 112.1,time =365063.737
+
+1/5
+num thread=1, pop size=5, gen to goals 562.0,time =88897.35770000002
+num thread=6, pop size=5, gen to goals 126.4,time =69679.7236
+num thread=11, pop size=5, gen to goals 81.7,time =80020.9801
+num thread=16, pop size=5, gen to goals 53.1,time =76564.35609999999
+num thread=21, pop size=5, gen to goals 48.8,time =92276.94519999999
+num thread=26, pop size=5, gen to goals 36.0,time =82279.02320000001
+num thread=31, pop size=5, gen to goals 35.2,time =96523.981
+num thread=36, pop size=5, gen to goals 29.6,time =95402.65569999997
+
+# Kêt luận :- tỉ lệ child dc thay thế / số lượng quân thể càng lớn => số lần tiến hóa để
+ thỏa mãn yêu cầu giảm
+            - số luồng tăng => số lần tiến hóa cx giảm
+
+
+#TESTCASE 3:
+200 thanh pho
+100 loop_test (test ben tren  la 10)
+1/20
+num thread=1, pop size=20, gen to goals 3712.19,time =35.24899999999999
+
+    num thread=1, pop size=20, gen to goals 3869.0,time =35.40399999999998
+    num thread=2, pop size=20, gen to goals 1832.27,time =33.51
+    num thread=3, pop size=20, gen to goals 1182.7,time =32.468
+    num thread=4, pop size=20, gen to goals 953.92,time =34.895999999999994
+
+    => tăng luồng tới mức nào đó thì hiệu suất không cải thiện đáng kể nữa(thời gian không giảm đáng kể do thuật toán +
+    ảnh hưởng sai số từ bộ đếm, hệ điều hành, hỗ trợ của ngôn ngữ lập trình  )
+
+num thread=6, pop size=20, gen to goals 641.21,time =34.247
+num thread=11, pop size=20, gen to goals 351.66,time =34.38
+num thread=16, pop size=20, gen to goals 252.53,time =35.949000000000005
+num thread=21, pop size=20, gen to goals 189.54,time =35.33799999999997
+num thread=26, pop size=20, gen to goals 151.16,time =34.901
+num thread=31, pop size=20, gen to goals 131.65,time =36.154
+
+
+KL : phụ thuộc vào tỉ lệ child thay thế / pop + NUM_OF_THREADS
+- tỉ lệ cao : tốc độ hội tụ nhanh
+- số luồng lớn : tốc độ hội tụ nhanh
+

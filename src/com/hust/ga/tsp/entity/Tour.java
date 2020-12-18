@@ -86,7 +86,7 @@ public class Tour{
     public String toString() {
         String geneString = "|";
         for (int i = 0; i < getTourSize(); i++) {
-            geneString += getCity(i)+"|";
+            geneString += getCity(i)+"->";
         }
         return geneString;
     }
